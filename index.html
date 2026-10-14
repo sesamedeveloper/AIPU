@@ -63,13 +63,14 @@
   <!-- =========================================
        SECTION 1 — HERO
   ========================================= -->
+
   <section class="aipu-hero" id="hero">
-    <!-- Ambient glowing orbs -->
+    <!-- Ambient glows -->
     <div class="hero-glow glow-top-right"></div>
     <div class="hero-glow glow-bottom-left"></div>
 
     <div class="hero-container">
-      <!-- LEFT COLUMN -->
+      <!-- Left-aligned content over the banner background -->
       <div class="hero-content">
         <div class="hero-eyebrow">
           <span class="eyebrow-dot"></span>
@@ -87,44 +88,31 @@
           AIPU helps MERN developers move from using AI to write code to using AI to build complete, real-world
           software.
         </p>
+
         <p class="hero-subhead-second">
           Learn to use AI across the development journey &mdash; from requirement to release.
         </p>
 
-        <div class="hero-buttons">
-          <a href="#invitation" class="btn btn-primary" id="hero-primary-cta">
-            Explore AIPU <span class="arrow">→</span>
-          </a>
-          <a href="#beyond-the-code" class="btn btn-secondary" id="hero-secondary-cta">
-            <span class="play-icon"><i class="fas fa-play"></i></span>
-            See How It Works
-          </a>
-        </div>
 
-        <!-- 3 Proof Points -->
         <div class="hero-proof-points">
           <div class="proof-item">
-            <span class="proof-icon"><i class="fas fa-code"></i></span>
             <div class="proof-text">
-              <strong>25+ Years of</strong>
-              <span>Software Experience*</span>
-            </div>
-          </div>
-
-          <div class="proof-divider"></div>
-
-          <div class="proof-item">
-            <span class="proof-icon"><i class="fas fa-layer-group"></i></span>
-            <div class="proof-text">
-              <strong>Structured Project</strong>
+              <strong>25+</strong>
+              <span>Years of Software</span>
               <span>Experience</span>
+
             </div>
           </div>
 
-          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <div class="proof-text">
+              <strong>1000+</strong>
+              <span>Projects Experience</span>
+            </div>
+          </div>
+
 
           <div class="proof-item">
-            <span class="proof-icon"><i class="fas fa-robot"></i></span>
             <div class="proof-text">
               <strong>AI-Enabled</strong>
               <span>Development</span>
@@ -132,69 +120,9 @@
           </div>
         </div>
       </div>
-
-      <!-- RIGHT COLUMN: VISUAL / ILLUSTRATION CARD -->
-      <div class="hero-visual">
-        <div class="hero-illustration-card">
-          <div class="card-inner-frame">
-            <div class="illustration-placeholder">
-              <img class="ambassador-image ambassador-image-hero"
-                src="images/brand_ambassador/Puzzled%20Student%20at%20His%20Laptop.png"
-                alt="MERN learner thinking through a technical challenge at his laptop" fetchpriority="high">
-              <div class="ambassador-image-scrim"></div>
-            </div>
-          </div>
-          
-        </div>
-
-        <!-- TODO: REMOVE THIS CODE, IT'S JUST A PLACEHOLDER FOR NOW -->
-
-
-        <div class="hero-illustration-card">
-          <div class="card-inner-frame">
-            <div class="illustration-placeholder">
-              <div class="placeholder-icon-circle">
-                <i class="fas fa-laptop-code"></i>
-              </div>
-              <div class="placeholder-title">AI-POWERED MERN ECOSYSTEM</div>
-              <p class="placeholder-subtitle">Real-World Architecture &bull; Full SDLC &bull; Production Delivery</p>
-
-              <!-- Interactive Visual Stack Mockup -->
-              <div class="mockup-workflow-pills">
-                <span class="pill-badge pill-m"><i class="fas fa-database"></i> MongoDB</span>
-                <span class="pill-badge pill-e"><i class="fas fa-server"></i> Express</span>
-                <span class="pill-badge pill-r"><i class="fab fa-react"></i> React</span>
-                <span class="pill-badge pill-n"><i class="fab fa-node-js"></i> Node.js</span>
-              </div>
-
-              <div class="workflow-visual-badge">
-                <span class="pulse-dot"></span>
-                <span>AI-Assisted Human Oversight &bull; Real Assignment Mode</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Floating Badges -->
-          <div class="floating-stat-card card-tl">
-            <span class="stat-num">100%</span>
-            <span class="stat-label">End-to-End SDLC Scope</span>
-          </div>
-
-          <div class="floating-stat-card card-br">
-            <i class="fas fa-shield-halved stat-icon"></i>
-            <div class="stat-info">
-              <strong>Production-Ready</strong>
-              <span>Verified Output</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
     </div>
 
-    <!-- Scroll Indicator -->
+    <!-- Scroll indicator -->
     <div class="hero-scroll-indicator">
       <a href="#beyond-the-code" class="scroll-link">
         <span>Scroll to learn more</span>
@@ -202,13 +130,14 @@
       </a>
     </div>
 
-    <!-- Curved wave transition into light warm section -->
+    <!-- Curved transition into the light section -->
     <div class="hero-wave-bottom">
-      <svg viewBox="0 0 1440 85" fill="none" preserveAspectRatio="none">
+      <svg viewBox="0 0 1440 85" fill="none" preserveAspectRatio="none" aria-hidden="true">
         <path d="M0,45 C320,85 640,15 1020,55 C1240,78 1360,50 1440,40 L1440,85 L0,85 Z" fill="#FAF8F5"></path>
       </svg>
     </div>
   </section>
+
 
   <!-- =========================================
        SECTION 2 — REDEFINE THE PROBLEM
@@ -239,45 +168,8 @@
 
         <!-- Right Side: Editorial Sketch & Browser Mockup -->
         <div class="beyond-sketch-col">
-          <div class="sketch-card-wrapper">
-            <div class="sketch-callout-top">
-              <span class="sketch-handwritten">It's a journey from an idea to real-world impact.</span>
-              <svg class="sketch-arrow-curved" width="70" height="40" viewBox="0 0 70 40" fill="none">
-                <path d="M5,35 C30,38 55,25 65,5" stroke="#F97316" stroke-width="2" stroke-linecap="round"
-                  stroke-dasharray="3 3" />
-                <polygon points="65,2 68,9 60,6" fill="#F97316" />
-              </svg>
-            </div>
-
-            <!-- Browser Wireframe Sketch -->
-            <div class="browser-wireframe-sketch">
-              <div class="wireframe-header">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-                <span class="wireframe-address-bar"></span>
-              </div>
-              <div class="wireframe-content">
-                <div class="wireframe-hero-block">
-                  <div class="wf-line wf-title"></div>
-                  <div class="wf-line wf-sub"></div>
-                </div>
-                <div class="wireframe-cards-row">
-                  <div class="wf-card"></div>
-                  <div class="wf-card"></div>
-                  <div class="wf-card"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="sketch-callout-bottom">
-              <svg class="sketch-arrow-up" width="45" height="35" viewBox="0 0 45 35" fill="none">
-                <path d="M5,30 C15,10 25,5 40,5" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" />
-                <polygon points="40,2 43,9 35,6" fill="#64748B" />
-              </svg>
-              <span class="sketch-handwritten-sub">More than just code.</span>
-            </div>
-          </div>
+          <img src="./images/brand_ambassador/Boy_With_Laptop.png" alt="Beyond the code generate wireframe mockup"
+            width="1536" height="1024" loading="lazy" decoding="async">
         </div>
       </div>
 
@@ -285,113 +177,9 @@
       <div class="stepper-section-title">
         <span class="stepper-label">THE 9-STEP SOFTWARE DEVELOPMENT JOURNEY</span>
       </div>
-
-      <div class="journey-stepper-track">
-        <!-- 01 Requirement -->
-        <div class="journey-step-node" data-step="1">
-          <div class="step-num">01</div>
-          <div class="step-icon-circle">
-            <i class="far fa-file-lines"></i>
-          </div>
-          <div class="step-name">Requirement</div>
-          <div class="step-question">What problem are we solving?</div>
-        </div>
-
-        <div class="journey-connector"><span></span></div>
-
-        <!-- 02 Planning -->
-        <div class="journey-step-node" data-step="2">
-          <div class="step-num">02</div>
-          <div class="step-icon-circle">
-            <i class="far fa-clipboard"></i>
-          </div>
-          <div class="step-name">Planning</div>
-          <div class="step-question">How should we solve it?</div>
-        </div>
-
-        <div class="journey-connector"><span></span></div>
-
-        <!-- 03 UI / UX -->
-        <div class="journey-step-node" data-step="3">
-          <div class="step-num">03</div>
-          <div class="step-icon-circle">
-            <i class="fas fa-desktop"></i>
-          </div>
-          <div class="step-name">UI / UX</div>
-          <div class="step-question">How should people experience it?</div>
-        </div>
-
-        <div class="journey-connector"><span></span></div>
-
-        <!-- 04 Architecture -->
-        <div class="journey-step-node" data-step="4">
-          <div class="step-num">04</div>
-          <div class="step-icon-circle">
-            <i class="fas fa-cubes"></i>
-          </div>
-          <div class="step-name">Architecture</div>
-          <div class="step-question">How should it be designed?</div>
-        </div>
-
-        <div class="journey-connector"><span></span></div>
-
-        <!-- 05 Development (HIGHLIGHTED) -->
-        <div class="journey-step-node step-highlighted" data-step="5">
-          <div class="step-num">05</div>
-          <div class="step-icon-circle">
-            <i class="fas fa-code"></i>
-          </div>
-          <div class="step-name">Development</div>
-          <div class="step-question">How do we build it?</div>
-        </div>
-
-        <div class="journey-connector"><span></span></div>
-
-        <!-- 06 Security -->
-        <div class="journey-step-node" data-step="6">
-          <div class="step-num">06</div>
-          <div class="step-icon-circle">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <div class="step-name">Security</div>
-          <div class="step-question">How do we protect it?</div>
-        </div>
-
-        <div class="journey-connector"><span></span></div>
-
-        <!-- 07 Testing -->
-        <div class="journey-step-node" data-step="7">
-          <div class="step-num">07</div>
-          <div class="step-icon-circle">
-            <i class="fas fa-vial"></i>
-          </div>
-          <div class="step-name">Testing</div>
-          <div class="step-question">Does it actually work?</div>
-        </div>
-
-        <div class="journey-connector"><span></span></div>
-
-        <!-- 08 Performance -->
-        <div class="journey-step-node" data-step="8">
-          <div class="step-num">08</div>
-          <div class="step-icon-circle">
-            <i class="fas fa-gauge-high"></i>
-          </div>
-          <div class="step-name">Performance</div>
-          <div class="step-question">Can it handle real use?</div>
-        </div>
-
-        <div class="journey-connector"><span></span></div>
-
-        <!-- 09 Deployment -->
-        <div class="journey-step-node" data-step="9">
-          <div class="step-num">09</div>
-          <div class="step-icon-circle">
-            <i class="fas fa-rocket"></i>
-          </div>
-          <div class="step-name">Deployment</div>
-          <div class="step-question">Can we put it into the real world?</div>
-        </div>
+      <div class="nine-steps-image-container">
+        <img src="./images/Nine_Steps_Of_SDL.jpeg" alt="Nine-step software development journey" width="1536"
+          height="1024" loading="lazy" decoding="async">
       </div>
 
       <!-- Section Conclusion Statement -->
@@ -582,78 +370,6 @@
   <!-- =========================================
        SECTION 4 — WHAT DOES “BUILD WITH AI” MEAN?
   ========================================= -->
-  <section class="section-build-with-ai" id="build-with-ai">
-    <div class="container">
-
-      <div class="section-heading-centered">
-        <div class="eyebrow-wrapper centered">
-          <span class="eyebrow-accent-bar"></span>
-          <span class="eyebrow-text">BEYOND AI-GENERATED CODE</span>
-        </div>
-        <h2 class="section-title">
-          DON'T JUST ASK AI TO CODE.<br>
-          <span class="title-highlight">BUILD WITH AI.</span>
-        </h2>
-        <p class="section-lead-paragraph">
-          <strong>Think better. Build smarter. Become a more confident MERN developer.</strong><br>
-          Building with AI means involving AI throughout the development journey &mdash; not just asking it to generate
-          a function or fix an error.
-        </p>
-      </div>
-
-      <!-- 4 Pillars Grid -->
-      <div class="build-pillars-grid">
-        <div class="pillar-card">
-          <div class="pillar-badge">01</div>
-          <div class="pillar-icon"><i class="fas fa-lightbulb"></i></div>
-          <h3>UNDERSTAND</h3>
-          <p>Explore requirements, identify missing details and ask better questions.</p>
-          <div class="pillar-footer-tag">Discovery &bull; Domain Scope</div>
-        </div>
-
-        <div class="pillar-card">
-          <div class="pillar-badge">02</div>
-          <div class="pillar-icon"><i class="fas fa-compass-drafting"></i></div>
-          <h3>PLAN</h3>
-          <p>Explore possible solutions, compare approaches and plan your implementation.</p>
-          <div class="pillar-footer-tag">Architecture &bull; API Design</div>
-        </div>
-
-        <div class="pillar-card pillar-featured">
-          <div class="pillar-badge">03</div>
-          <div class="pillar-icon"><i class="fas fa-laptop-code"></i></div>
-          <h3>BUILD</h3>
-          <p>Develop React interfaces, create APIs and work with application data &mdash; with AI as an assistant.</p>
-          <div class="pillar-footer-tag">MERN Stack &bull; Active Pairing</div>
-        </div>
-
-        <div class="pillar-card">
-          <div class="pillar-badge">04</div>
-          <div class="pillar-icon"><i class="fas fa-shield-virus"></i></div>
-          <h3>REVIEW &amp; IMPROVE</h3>
-          <p>Debug, test, examine security, improve quality and refine your solution.</p>
-          <div class="pillar-footer-tag">Audits &bull; QA &bull; Optimization</div>
-        </div>
-      </div>
-
-      <!-- Human in Control Callout Card -->
-      <div class="control-banner-box">
-        <div class="banner-inner">
-          <div class="banner-badge-tag">CORE PHILOSOPHY</div>
-          <h3>AI assists. You stay in control.</h3>
-          <p class="banner-instructions">
-            Direct AI. Question its answers. Review the code. Verify the result. Take responsibility for what you build.
-          </p>
-          <div class="shift-quote">
-            <span class="shift-from">From &ldquo;AI, write this code&rdquo;</span>
-            <span class="shift-arrow">→</span>
-            <span class="shift-to">to &ldquo;AI, help me build this right.&rdquo;</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- =========================================
        SECTION 5 — THE TRANSFORMATION
@@ -688,7 +404,7 @@
             <p>Fragile workflow, high friction, repeated dead-ends</p>
           </div>
           <figure class="ambassador-story-image ambassador-story-image-before">
-            <img src="images/brand_ambassador/Melancholic%20Tearful%20Portrait.png"
+            <img src="images/brand_ambassador/Sad_Boy.jpeg"
               alt="Learner feeling discouraged after repeated coding dead-ends" loading="lazy">
           </figure>
           <ul class="compare-list">
@@ -731,7 +447,7 @@
             <p>Confident engineering, structured review, reliable software</p>
           </div>
           <figure class="ambassador-story-image ambassador-story-image-after">
-            <img src="images/brand_ambassador/Happy%20Campus%20Laptop%20Study%20Session.png"
+            <img src="images/brand_ambassador/Happy_Boy_With_Laptop.png"
               alt="Confident learner building software with a laptop" loading="lazy">
           </figure>
           <ul class="compare-list">
@@ -874,16 +590,123 @@
       </div>
 
       <!-- Philosophy Callout -->
-      <div class="philosophy-strip-banner">
+      <!-- <div class="philosophy-strip-banner">
         <div class="phil-quote">
           <span class="phil-label">OUR PHILOSOPHY</span>
           <h3>We build software. Coding is just the start.</h3>
           <p>AIPU is designed to help you experience that broader way of working.</p>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </section>
+
+
+
+
+
+
+
+
+  <!-- Custom Section Starting -->
+
+  <section class="section-why-sesame" id="why-sesame">
+    <div class="container">
+
+      <div class="eyebrow-wrapper">
+        <span class="eyebrow-accent-bar"></span>
+        <span class="eyebrow-text">FROM REQUIREMENT TO WORKING APPLICATION</span>
+      </div>
+
+      <div class="why-sesame-header-grid">
+        <div class="why-text-col">
+          <h2 class="editorial-headline">
+            Dont't just learn software Development. <br>
+            <span class="editorial-blue">Experience how it gets built</span>
+          </h2>
+          <p class="why-intro-lead">
+            What happens when you move beyond asking AI to generate code and begin working through the journey of a
+            software project?
+          </p>
+          <p class="why-intro-body">
+            At AIPU, you work through a structured MERN-stack software-development assignment in a software-company
+            learning environment.
+            You practise using AI throughout the journey while learning to review its output, make technical decisions
+            and take ownership of your implementation.
+          </p>
+        </div>
+
+        <div class="why-stats-col">
+
+          <div class="real-project-on-devices">
+            <img src="images/Live_Project.png" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon icon-orange">
+            <span>▤</span>
+          </div>
+          <div class="feature-title">Understand The<br>Requirement</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">
+            <span>▰</span>
+          </div>
+          <div class="feature-title">Plan<br>And Design</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-purple">
+            <span>▦</span>
+          </div>
+          <div class="feature-title">Build &amp;<br>The Application</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-green">
+            <span>⚙</span>
+          </div>
+          <div class="feature-title">Debug<br>And Improve</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-cyan">
+            <span>▯</span>
+          </div>
+          <div class="feature-title">Test <br>And Review</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-red">
+            <span>♢</span>
+          </div>
+          <div class="feature-title">Demonstrate <br>And Hand Over</div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- Custom Section Ending -->
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- =========================================
        SECTION 7 — THE AIPU PROJECT EXPERIENCE
