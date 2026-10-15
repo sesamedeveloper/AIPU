@@ -159,12 +159,12 @@ button {
 }
 
 .section-heading-centered {
-  text-align: center;
+  text-align: left;
   max-width: 860px;
-  margin: 0 auto 55px auto;
+  margin: 0 0 55px 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 /* Eyebrows */
@@ -176,7 +176,7 @@ button {
 }
 
 .eyebrow-wrapper.centered {
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .eyebrow-accent-bar {
@@ -1140,12 +1140,12 @@ button {
 
 /* Centered conclusion statements */
 .section-center-statement {
-  text-align: center;
+  text-align: left;
   max-width: 780px;
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .statement-main {
@@ -1206,6 +1206,16 @@ button {
   gap: 40px;
   align-items: center;
   margin-bottom: 60px;
+}
+
+.evolving-title-col .editorial-headline {
+  font-family: var(--font-editorial);
+  color: var(--text-dark);
+}
+
+.evolving-title-col .editorial-blue {
+  font-family: var(--font-editorial);
+  color: var(--blue-primary);
 }
 
 .evolving-subhead {
@@ -2215,12 +2225,9 @@ button {
 }
 
 .online-subhead {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--text-body);
   line-height: 1.65;
-  max-width: 820px;
-  margin: 0 auto 50px auto;
-  text-align: center;
 }
 
 .online-vs-aipu-grid {
@@ -2396,12 +2403,9 @@ button {
 }
 
 .tracks-sub-desc {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--text-body);
   line-height: 1.65;
-  max-width: 780px;
-  margin: 0 auto 50px auto;
-  text-align: center;
 }
 
 .tracks-cards-grid {
@@ -4214,4 +4218,71 @@ button {
   .aipu-hero .hero-scroll-indicator {
     display: none;
   }
+}
+
+
+/* Reusable Assessment CTA Block */
+.assessment-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 24px 28px;
+  background-color: #FAF8F5; /* Sampled cream tone from the reference */
+  
+  /* Slanted / Chamfered Border Effect */
+  border: 1.5px solid #E2E8F0;
+  clip-path: polygon(
+    18px 0%,                  /* Top-left slant cut */
+    100% 0%, 
+    100% calc(100% - 18px),  /* Bottom-right slant cut */
+    calc(100% - 18px) 100%, 
+    0% 100%, 
+    0% 18px
+  );
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+/* Black Content Text */
+.assessment-cta__text {
+  margin: 0;
+  font-family: var(--font-ui, 'Plus Jakarta Sans', sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #0F172A; /* Crisp solid black / dark-charcoal */
+  text-align: left;
+}
+
+/* Blue Button with Green Text */
+.assessment-cta__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  background-color: var(--blue-primary, #1D68F2); /* Solid blue */
+  color: #ffffff;                                   /* Vibrant green text */
+  border: 1.5px solid rgba(16, 185, 129, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(29, 104, 242, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Interactive Hover State */
+.assessment-cta__button:hover {
+  background-color: var(--blue-hover, #1557CE);
+  color: #ffffff; /* Brighter neon-emerald on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(29, 104, 242, 0.4), 0 0 10px rgba(16, 185, 129, 0.2);
+  border-color: #ffffff;
+}
+
+.assessment-cta__button:active {
+  transform: translateY(0);
 }
