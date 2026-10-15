@@ -1973,8 +1973,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.75;
-  filter: grayscale(80%);
+  opacity: 1;
+  filter: none;
   transition: all var(--transition-fast);
 }
 
@@ -1988,6 +1988,13 @@ button {
   opacity: 1;
   filter: grayscale(0%);
   transform: scale(1.05);
+}
+
+/* Keep your existing .logo-item styles as they are, then add: */
+.logo-item.active,
+.logo-item.no-grey {
+  opacity: 1;
+  filter: none;
 }
 
 /* Philosophy Callout */
@@ -2218,24 +2225,68 @@ button {
 
 .online-vs-aipu-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 30px;
   margin-bottom: 50px;
+  align-items: stretch;
 }
 
 .approach-card {
   background: #FFFFFF;
   border-radius: 12px;
-  padding: 40px 36px;
+  padding: 38px 30px;
   box-shadow: var(--shadow-sm);
   border: 1px solid #E2E8F0;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .approach-header {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   padding-bottom: 20px;
   border-bottom: 1px solid #F1F5F9;
+}
+
+.approach-card-body,
+.self-card-body {
+  display: grid;
+  grid-template-columns: 1fr 190px;
+  gap: 18px;
+  align-items: center;
+  flex: 1;
+}
+
+.approach-card .approach-steps {
+  gap: 14px;
+}
+
+.approach-card .approach-steps li {
+  font-size: 14px;
+  line-height: 1.45;
+  gap: 10px;
+}
+
+.image-learning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.image-learning img {
+  width: 100%;
+  max-width: 195px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 10px;
+  filter: drop-shadow(0 6px 18px rgba(15, 23, 42, 0.09));
+  transition: transform 0.25s ease;
+}
+
+.approach-card:hover .image-learning img {
+  transform: translateY(-2px) scale(1.02);
 }
 
 .approach-icon {
@@ -3141,7 +3192,28 @@ button {
   }
 }
 
+@media (max-width: 960px) {
+  .online-vs-aipu-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
 @media (max-width: 580px) {
+  .approach-card-body,
+  .self-card-body {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .image-learning {
+    margin-top: 6px;
+  }
+
+  .image-learning img {
+    max-width: 260px;
+  }
+
   .build-pillars-grid,
   .relevance-grid {
     grid-template-columns: 1fr;
@@ -3207,7 +3279,7 @@ button {
 
 
 /* ==========================================================================
-   AIPU HERO — FULL-WIDTH IMAGE BANNER
+   AIPU HERO — FULL-WIDTH IMAGE BANNER (RESPONSIVE)
    Uses images/banners/Hero_Banner_Guy_Infront_Of_Laptop.png
    ========================================================================== */
 
@@ -3215,17 +3287,18 @@ button {
   position: relative;
   isolation: isolate;
   display: flex;
-  align-items: center;
-  min-height: clamp(620px, 46vw, 760px);
-  padding: 145px 0 110px;
+  flex-direction: column;
+  justify-content: center;
+  min-height: clamp(620px, 48vw, 780px);
+  padding: 145px 0 115px;
   overflow: hidden;
   color: var(--text-white);
   background:
     linear-gradient(90deg,
       rgba(5, 14, 28, 0.98) 0%,
-      rgba(5, 14, 28, 0.93) 30%,
-      rgba(5, 14, 28, 0.72) 48%,
-      rgba(5, 14, 28, 0.18) 76%,
+      rgba(5, 14, 28, 0.94) 34%,
+      rgba(5, 14, 28, 0.74) 52%,
+      rgba(5, 14, 28, 0.20) 78%,
       rgba(5, 14, 28, 0.08) 100%),
     url("images/banners/Hero_Banner_Guy_Infront_Of_Laptop.png") center right / cover no-repeat,
     var(--navy-darkest);
@@ -3234,54 +3307,150 @@ button {
 .aipu-hero .hero-glow {
   z-index: -1;
   opacity: 0.35;
+  pointer-events: none;
 }
 
 .aipu-hero .hero-container {
   width: min(1360px, 92%);
-  grid-template-columns: minmax(0, 760px);
-  gap: 0;
-  align-items: center;
   margin: 0 auto;
+  display: block;
+  position: relative;
   z-index: 2;
 }
 
 .aipu-hero .hero-content {
-  max-width: 760px;
+  max-width: 720px;
   width: 100%;
 }
 
-.aipu-hero .hero-headline {
-  max-width: 760px;
-  font-size: clamp(38px, 4.3vw, 66px);
-  line-height: 1.04;
-  letter-spacing: -1.8px;
-  text-wrap: balance;
+.aipu-hero .hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cyan-accent);
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 6px 16px;
+  border-radius: 30px;
+  margin-bottom: 22px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-.aipu-hero .hero-subhead,
+.aipu-hero .eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--cyan-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cyan-accent);
+}
+
+.aipu-hero .hero-headline {
+  max-width: 720px;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(36px, 4.2vw, 62px);
+  font-weight: 900;
+  line-height: 1.06;
+  letter-spacing: -1.6px;
+  text-wrap: balance;
+  margin-bottom: 22px;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.aipu-hero .hero-headline .hl-white {
+  display: block;
+  color: var(--text-white);
+}
+
+.aipu-hero .hero-headline .hl-cyan {
+  display: block;
+  color: var(--cyan-accent);
+  text-shadow: 0 0 24px rgba(56, 189, 248, 0.25);
+}
+
+.aipu-hero .hero-subhead {
+  font-size: clamp(16px, 1.35vw, 19px);
+  font-weight: 500;
+  color: #E2E8F0;
+  line-height: 1.55;
+  max-width: 620px;
+  margin-bottom: 12px;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
+}
+
 .aipu-hero .hero-subhead-second {
-  max-width: 640px;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+  font-size: clamp(14.5px, 1.15vw, 16.5px);
+  color: var(--text-light-muted, #94A3B8);
+  line-height: 1.55;
+  max-width: 600px;
+  margin-bottom: 34px;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
 }
 
 .aipu-hero .hero-buttons {
-  margin-bottom: 34px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
 }
 
 .aipu-hero .hero-proof-points {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 20px 32px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   max-width: 720px;
-  gap: 18px;
-  padding-top: 24px;
 }
 
 .aipu-hero .proof-item {
-  gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.aipu-hero .proof-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.aipu-hero .proof-text strong {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(24px, 2.2vw, 34px);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--cyan-accent, #00c8f0);
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 14px rgba(0, 200, 240, 0.25);
+}
+
+.aipu-hero .proof-text span {
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .aipu-hero .proof-icon {
   flex: 0 0 40px;
   width: 40px;
   height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: var(--cyan-accent);
+  font-size: 18px;
 }
 
 .aipu-hero .hero-visual {
@@ -3289,95 +3458,266 @@ button {
 }
 
 .aipu-hero .hero-scroll-indicator {
-  margin-top: 24px;
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0;
+  z-index: 5;
+  text-align: center;
 }
 
 .aipu-hero .hero-wave-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 1;
   pointer-events: none;
 }
 
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN BREAKPOINTS
+   -------------------------------------------------------------------------- */
+
+/* Ultra-Wide Desktop (>= 1600px) */
 @media (min-width: 1600px) {
   .aipu-hero {
     min-height: 760px;
+    padding: 160px 0 125px;
   }
 }
 
-@media (max-width: 900px) {
+/* Laptop / Medium Desktop (1025px - 1280px) */
+@media (max-width: 1280px) {
   .aipu-hero {
-    min-height: auto;
-    padding: 125px 0 95px;
     background:
       linear-gradient(90deg,
-        rgba(5, 14, 28, 0.97) 0%,
-        rgba(5, 14, 28, 0.88) 55%,
-        rgba(5, 14, 28, 0.58) 100%),
-      url("images/banners/Hero_Banner_Guy_Infront_Of_Laptop.png") 62% center / cover no-repeat,
+        rgba(5, 14, 28, 0.98) 0%,
+        rgba(5, 14, 28, 0.94) 40%,
+        rgba(5, 14, 28, 0.76) 60%,
+        rgba(5, 14, 28, 0.24) 82%,
+        rgba(5, 14, 28, 0.10) 100%),
+      url("images/banners/Hero_Banner_Guy_Infront_Of_Laptop.png") right 20% center / cover no-repeat,
       var(--navy-darkest);
-  }
-
-  .aipu-hero .hero-container {
-    width: min(100% - 40px, 760px);
   }
 
   .aipu-hero .hero-content {
-    max-width: 700px;
+    max-width: 660px;
   }
 
   .aipu-hero .hero-headline {
-    font-size: clamp(36px, 6vw, 54px);
+    font-size: clamp(34px, 3.8vw, 54px);
+    letter-spacing: -1.3px;
   }
 }
 
-@media (max-width: 580px) {
+/* Tablet Landscape & Portrait (768px - 1024px) */
+@media (max-width: 1024px) {
   .aipu-hero {
-    padding: 110px 0 85px;
+    min-height: auto;
+    padding: 130px 0 95px;
     background:
       linear-gradient(90deg,
-        rgba(5, 14, 28, 0.96) 0%,
-        rgba(5, 14, 28, 0.88) 100%),
-      url("images/banners/Hero_Banner_Guy_Infront_Of_Laptop.png") 64% center / cover no-repeat,
+        rgba(5, 14, 28, 0.98) 0%,
+        rgba(5, 14, 28, 0.95) 48%,
+        rgba(5, 14, 28, 0.82) 74%,
+        rgba(5, 14, 28, 0.45) 100%),
+      url("images/banners/Hero_Banner_Guy_Infront_Of_Laptop.png") right 12% center / cover no-repeat,
       var(--navy-darkest);
   }
 
   .aipu-hero .hero-container {
-    width: calc(100% - 36px);
+    width: min(100% - 48px, 760px);
+  }
+
+  .aipu-hero .hero-content {
+    max-width: 580px;
   }
 
   .aipu-hero .hero-headline {
-    font-size: clamp(34px, 9vw, 44px);
-    letter-spacing: -1.2px;
-  }
-
-  .aipu-hero .hero-eyebrow {
-    font-size: 10px;
-    letter-spacing: 1.3px;
-    padding: 6px 12px;
-    margin-bottom: 18px;
+    font-size: clamp(30px, 4.4vw, 42px);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 20px;
   }
 
   .aipu-hero .hero-subhead {
     font-size: 16px;
+    max-width: 540px;
   }
 
   .aipu-hero .hero-subhead-second {
-    font-size: 14px;
-    margin-bottom: 26px;
+    font-size: 14.5px;
+    max-width: 520px;
+    margin-bottom: 28px;
+  }
+
+  .aipu-hero .hero-proof-points {
+    gap: 16px 24px;
+    padding-top: 22px;
+  }
+
+  .aipu-hero .proof-text strong {
+    font-size: 26px;
+  }
+
+  .aipu-hero .proof-text span {
+    font-size: 13px;
+  }
+}
+
+/* Small Tablets & Large Mobile Landscape (581px - 767px) */
+@media (max-width: 767px) {
+  .aipu-hero {
+    padding: 120px 0 90px;
+    background:
+      linear-gradient(180deg,
+        rgba(5, 14, 28, 0.94) 0%,
+        rgba(5, 14, 28, 0.88) 45%,
+        rgba(5, 14, 28, 0.97) 85%,
+        rgba(5, 14, 28, 1) 100%),
+      linear-gradient(90deg,
+        rgba(5, 14, 28, 0.98) 0%,
+        rgba(5, 14, 28, 0.90) 60%,
+        rgba(5, 14, 28, 0.65) 100%),
+      url("images/banners/Hero_Banner_Guy_Infront_Of_Laptop.png") 75% center / cover no-repeat,
+      var(--navy-darkest);
+  }
+
+  .aipu-hero .hero-container {
+    width: min(100% - 40px, 620px);
+  }
+
+  .aipu-hero .hero-content {
+    max-width: 100%;
+  }
+
+  .aipu-hero .hero-headline {
+    font-size: clamp(26px, 5.5vw, 36px);
+    letter-spacing: -0.8px;
+    line-height: 1.12;
+  }
+
+  .aipu-hero .hero-proof-points {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .aipu-hero .proof-item {
+    padding: 10px 12px;
+    background: rgba(14, 34, 69, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .aipu-hero .proof-text strong {
+    font-size: 22px;
+  }
+
+  .aipu-hero .proof-text span {
+    font-size: 12px;
+  }
+
+  .aipu-hero .hero-wave-bottom {
+    height: 55px;
+  }
+}
+
+/* Mobile Phones (Portrait) (381px - 580px) */
+@media (max-width: 580px) {
+  .aipu-hero {
+    padding: 105px 0 85px;
+    background:
+      linear-gradient(180deg,
+        rgba(5, 14, 28, 0.94) 0%,
+        rgba(5, 14, 28, 0.88) 35%,
+        rgba(5, 14, 28, 0.96) 80%,
+        rgba(5, 14, 28, 1) 100%),
+      linear-gradient(90deg,
+        rgba(5, 14, 28, 0.98) 0%,
+        rgba(5, 14, 28, 0.92) 65%,
+        rgba(5, 14, 28, 0.70) 100%),
+      url("images/banners/Hero_Banner_Guy_Infront_Of_Laptop.png") 80% center / cover no-repeat,
+      var(--navy-darkest);
+  }
+
+  .aipu-hero .hero-container {
+    width: calc(100% - 32px);
+  }
+
+  .aipu-hero .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    padding: 5px 12px;
+    margin-bottom: 16px;
+    gap: 7px;
+  }
+
+  .aipu-hero .eyebrow-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .aipu-hero .hero-headline {
+    font-size: clamp(23px, 6.8vw, 31px);
+    line-height: 1.15;
+    letter-spacing: -0.6px;
+    margin-bottom: 16px;
+  }
+
+  .aipu-hero .hero-subhead {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    color: #E2E8F0;
+  }
+
+  .aipu-hero .hero-subhead-second {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 22px;
+    color: #94A3B8;
   }
 
   .aipu-hero .hero-buttons {
+    flex-direction: column;
     align-items: stretch;
     gap: 12px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
+    width: 100%;
   }
 
   .aipu-hero .hero-buttons .btn {
     width: 100%;
+    justify-content: center;
   }
 
   .aipu-hero .hero-proof-points {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    width: 100%;
+  }
+
+  .aipu-hero .proof-item {
+    flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
-    padding-top: 20px;
+    padding: 10px 8px;
+    background: rgba(14, 34, 69, 0.55);
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   }
 
   .aipu-hero .proof-divider {
@@ -3385,42 +3725,95 @@ button {
   }
 
   .aipu-hero .proof-text strong {
-    font-size: 13px;
+    font-size: clamp(17px, 4.8vw, 21px);
+    font-weight: 800;
+    color: #00c8f0;
+    line-height: 1.15;
+    letter-spacing: -0.4px;
+    text-shadow: 0 0 10px rgba(0, 200, 240, 0.2);
   }
 
   .aipu-hero .proof-text span {
     font-size: 11px;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.82);
+    margin-top: 2px;
+  }
+
+  .aipu-hero .hero-wave-bottom {
+    height: 48px;
   }
 
   .aipu-hero .hero-scroll-indicator {
-    margin-top: 22px;
+    bottom: 12px;
+  }
+
+  .aipu-hero .scroll-link span {
+    font-size: 11px;
   }
 }
 
-
-.proof-text strong {
-  font-size: clamp(26px, 2.2vw, 36px);
-  font-weight: 800;
-  line-height: 1.2;
-  color: #00c8f0;
-  letter-spacing: -0.5px;
-  text-shadow: 0 0 12px rgba(0, 200, 240, 0.15);
-}
-
-.proof-text span {
-  font-size: 15px;
-  line-height: 1.5;
-  color: #ffffff;
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .proof-text strong {
-    font-size: 24px;
+/* Extra-Small Mobile (< 380px, e.g. iPhone SE 320-375px) */
+@media (max-width: 380px) {
+  .aipu-hero {
+    padding: 95px 0 75px;
   }
 
-  .proof-text span {
-    font-size: 12px;
+  .aipu-hero .hero-container {
+    width: calc(100% - 24px);
+  }
+
+  .aipu-hero .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+
+  .aipu-hero .hero-headline {
+    font-size: clamp(20px, 6.4vw, 25px);
+    letter-spacing: -0.4px;
+    line-height: 1.16;
+    margin-bottom: 14px;
+  }
+
+  .aipu-hero .hero-subhead {
+    font-size: 13.5px;
+    line-height: 1.45;
+    margin-bottom: 8px;
+  }
+
+  .aipu-hero .hero-subhead-second {
+    font-size: 12.5px;
+    line-height: 1.45;
+    margin-bottom: 18px;
+  }
+
+  .aipu-hero .hero-proof-points {
+    gap: 6px;
+    padding-top: 14px;
+  }
+
+  .aipu-hero .proof-item {
+    padding: 8px 6px;
+    border-radius: 8px;
+  }
+
+  .aipu-hero .proof-text strong {
+    font-size: 15px;
+  }
+
+  .aipu-hero .proof-text span {
+    font-size: 9.5px;
+    line-height: 1.25;
+  }
+
+  .aipu-hero .hero-wave-bottom {
+    height: 38px;
+  }
+
+  .aipu-hero .hero-scroll-indicator {
+    display: none;
   }
 }
 
@@ -3429,7 +3822,7 @@ button {
 /* Feature Grid */
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 10px;
   width: 100%;
   max-width: 1290px;
@@ -3439,9 +3832,9 @@ button {
 .feature-card {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 6px;
+  align-items: center;      /* Changed from flex-start to center horizontally */
+  justify-content: center;   /* Centers items vertically if card stretches */
+  gap: 8px;
 
   min-width: 0;
   min-height: 78px;
@@ -3453,6 +3846,16 @@ button {
 
   box-shadow: 0 3px 12px rgba(10, 30, 60, 0.04);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Feature Label */
+.feature-title {
+  color: #17264b;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;        /* Centers multiline text */
+  overflow-wrap: anywhere;
 }
 
 .feature-card:hover {
@@ -3546,5 +3949,269 @@ button {
 
   .feature-title {
     font-size: 11px;
+  }
+}
+
+
+
+/* Small Tablets & Large Mobile Landscape (581px - 767px) */
+@media (max-width: 767px) {
+  .aipu-hero {
+    padding: 120px 0 90px;
+    background:
+      linear-gradient(180deg,
+        rgba(5, 14, 28, 0.78) 0%,
+        rgba(5, 14, 28, 0.65) 45%,
+        rgba(5, 14, 28, 0.88) 85%,
+        rgba(5, 14, 28, 0.98) 100%),
+      linear-gradient(90deg,
+        rgba(5, 14, 28, 0.90) 0%,
+        rgba(5, 14, 28, 0.70) 55%,
+        rgba(5, 14, 28, 0.35) 100%),
+      url("images/banners/Hero_Banner_Guy_Infront_Of_Laptop.png") 66% top / cover no-repeat,
+      var(--navy-darkest);
+  }
+
+  .aipu-hero .hero-container {
+    width: min(100% - 40px, 620px);
+  }
+
+  .aipu-hero .hero-content {
+    max-width: 100%;
+  }
+
+  .aipu-hero .hero-headline {
+    font-size: clamp(26px, 5.5vw, 36px);
+    letter-spacing: -0.8px;
+    line-height: 1.12;
+  }
+
+  .aipu-hero .hero-proof-points {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .aipu-hero .proof-item {
+    padding: 10px 12px;
+    background: rgba(14, 34, 69, 0.65);
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .aipu-hero .proof-text strong {
+    font-size: 22px;
+  }
+
+  .aipu-hero .proof-text span {
+    font-size: 12px;
+  }
+
+  .aipu-hero .hero-wave-bottom {
+    height: 55px;
+  }
+}
+
+/* Mobile Phones (Portrait) (381px - 580px) */
+@media (max-width: 580px) {
+  .aipu-hero {
+    padding: 105px 0 85px;
+    background:
+      linear-gradient(180deg,
+        rgba(5, 14, 28, 0.80) 0%,
+        rgba(5, 14, 28, 0.60) 38%,
+        rgba(5, 14, 28, 0.88) 78%,
+        rgba(5, 14, 28, 0.98) 100%),
+      linear-gradient(90deg,
+        rgba(5, 14, 28, 0.88) 0%,
+        rgba(5, 14, 28, 0.62) 60%,
+        rgba(5, 14, 28, 0.35) 100%),
+      url("images/banners/Hero_Banner_Guy_Infront_Of_Laptop.png") 68% top / cover no-repeat,
+      var(--navy-darkest);
+  }
+
+  .aipu-hero .hero-container {
+    width: calc(100% - 32px);
+  }
+
+  .aipu-hero .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    padding: 5px 12px;
+    margin-bottom: 16px;
+    gap: 7px;
+  }
+
+  .aipu-hero .eyebrow-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .aipu-hero .hero-headline {
+    font-size: clamp(23px, 6.8vw, 31px);
+    line-height: 1.15;
+    letter-spacing: -0.6px;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 14px rgba(5, 14, 28, 0.8);
+  }
+
+  .aipu-hero .hero-subhead {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    color: #E2E8F0;
+    text-shadow: 0 2px 10px rgba(5, 14, 28, 0.85);
+  }
+
+  .aipu-hero .hero-subhead-second {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 22px;
+    color: #CBD5E1;
+    text-shadow: 0 2px 10px rgba(5, 14, 28, 0.85);
+  }
+
+  .aipu-hero .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 24px;
+    width: 100%;
+  }
+
+  .aipu-hero .hero-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .aipu-hero .hero-proof-points {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    width: 100%;
+  }
+
+  .aipu-hero .proof-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 8px;
+    background: rgba(14, 34, 69, 0.65);
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .aipu-hero .proof-divider {
+    display: none;
+  }
+
+  .aipu-hero .proof-text strong {
+    font-size: clamp(17px, 4.8vw, 21px);
+    font-weight: 800;
+    color: #00c8f0;
+    line-height: 1.15;
+    letter-spacing: -0.4px;
+    text-shadow: 0 0 10px rgba(0, 200, 240, 0.2);
+  }
+
+  .aipu-hero .proof-text span {
+    font-size: 11px;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.82);
+    margin-top: 2px;
+  }
+
+  .aipu-hero .hero-wave-bottom {
+    height: 48px;
+  }
+
+  .aipu-hero .hero-scroll-indicator {
+    bottom: 12px;
+  }
+
+  .aipu-hero .scroll-link span {
+    font-size: 11px;
+  }
+}
+
+/* Extra-Small Mobile (< 380px) */
+@media (max-width: 380px) {
+  .aipu-hero {
+    padding: 95px 0 75px;
+    background:
+      linear-gradient(180deg,
+        rgba(5, 14, 28, 0.82) 0%,
+        rgba(5, 14, 28, 0.62) 38%,
+        rgba(5, 14, 28, 0.90) 80%,
+        rgba(5, 14, 28, 0.98) 100%),
+      linear-gradient(90deg,
+        rgba(5, 14, 28, 0.90) 0%,
+        rgba(5, 14, 28, 0.65) 60%,
+        rgba(5, 14, 28, 0.40) 100%),
+      url("images/banners/Hero_Banner_Guy_Infront_Of_Laptop.png") 66% top / cover no-repeat,
+      var(--navy-darkest);
+  }
+
+  .aipu-hero .hero-container {
+    width: calc(100% - 24px);
+  }
+
+  .aipu-hero .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+
+  .aipu-hero .hero-headline {
+    font-size: clamp(20px, 6.4vw, 25px);
+    letter-spacing: -0.4px;
+    line-height: 1.16;
+    margin-bottom: 14px;
+  }
+
+  .aipu-hero .hero-subhead {
+    font-size: 13.5px;
+    line-height: 1.45;
+    margin-bottom: 8px;
+  }
+
+  .aipu-hero .hero-subhead-second {
+    font-size: 12.5px;
+    line-height: 1.45;
+    margin-bottom: 18px;
+  }
+
+  .aipu-hero .hero-proof-points {
+    gap: 6px;
+    padding-top: 14px;
+  }
+
+  .aipu-hero .proof-item {
+    padding: 8px 6px;
+    border-radius: 8px;
+  }
+
+  .aipu-hero .proof-text strong {
+    font-size: 15px;
+  }
+
+  .aipu-hero .proof-text span {
+    font-size: 9.5px;
+    line-height: 1.25;
+  }
+
+  .aipu-hero .hero-wave-bottom {
+    height: 38px;
+  }
+
+  .aipu-hero .hero-scroll-indicator {
+    display: none;
   }
 }
